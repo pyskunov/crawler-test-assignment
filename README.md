@@ -31,8 +31,8 @@ url in your submission.
 
 What we're looking for
 
-1. High quality and polished code []
-2. Attention to architecture and organization []
+1. High quality and polished code [ ]
+2. Attention to architecture and organization [ ]
 3. Accuracy of the crawled information []
 
 ## Bonus
