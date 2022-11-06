@@ -4,6 +4,8 @@
 
 @section('content')
     <div class="col-6 offset-3">
+        <p><b>GitHub repository</b> <a href="https://github.com/pyskunov/crawler-test-assignment">Click me</a></p>
+
         <h1>Test Task Page</h1>
 
         <form action="{{ route('crawler') }}">
