@@ -35,6 +35,8 @@ class CrawlerController extends Controller
     #[Post(uri: 'crawler', name: 'crawler')]
     public function crawler(InitRequest $request): View
     {
+        session()->put('a', rand(1, 100));
+
         // Let's expect view will be returned to display our results
         return view(
             'domains.crawler.results',

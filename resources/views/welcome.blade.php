@@ -22,7 +22,6 @@
                 class="@error('target') is-invalid @enderror mb-2 form-control"
                 value="{{ old('target', 'https://agencyanalytics.com') }}"
             >
-
             @error('target')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
