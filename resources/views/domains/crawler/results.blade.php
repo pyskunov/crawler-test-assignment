@@ -3,6 +3,8 @@
 @section('title', config('app.name') . " - Results")
 
 <div class="col-10 offset-1">
+    <a class="btn btn-primary mb-4" href="/">Try again</a>
+
     <p class="h1 mb-4">Target: <i>{{ request()->input('target') }}</i></p>
 
     <strong class="h1">Total stats</strong>
@@ -68,12 +70,14 @@
             @endforeach
         </tbody>
     </table>
-</div>
 
-@empty($data['errors'])
-    <div class="col-10 offset-1">
-        <span>No errors :)</span>
-    </div>
-@else
-    @dump($data['errors'])
-@endempty
+    @empty($data['errors'])
+        <div class="col-10 offset-1">
+            <span>No errors :)</span>
+        </div>
+    @else
+        <p>I believe we can debug with dumps here for this time.</p>
+
+        <p>Errors: @dump($data['errors'])</p>
+    @endempty
+</div>

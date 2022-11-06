@@ -59,9 +59,10 @@ class TakeInternalURLsPipe
 
         /**
          * Self-section loop anchor can be an internal link.
+         * But I believe that will not reflect what we need.
          */
         if (preg_match('/^\/?#.*/', $href)) {
-            return true;
+            return false;
         }
 
         if (Str::of($href)->startsWith('/')) {

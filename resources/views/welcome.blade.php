@@ -23,7 +23,7 @@
 
             <script>
                 const revealSecret = () => {
-                    alert(`You can do the same by running CLI \n"php artisan crawler:parse {target}"`)
+                    alert(`You can do the same by running CLI \n"php artisan crawler:parse ${document.querySelector('input#target').value || "{target}"}"`)
                 }
             </script>
         </form>

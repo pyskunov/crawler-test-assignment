@@ -76,7 +76,7 @@ class CrawlerService
         $this->urlPool[] = $targetURL;
 
         // While pool has tasks and we have not too much errors + not enough results
-        while (!empty($this->urlPool) && $this->needsMoreResults() && $this->isTooMuchErrors()) {
+        while (!empty($this->urlPool) && $this->needsMoreResults() && !$this->isTooMuchErrors()) {
             try {
                 // Pull next URL from the pool
                 $nextURL = $this->pullInternalURL();
@@ -102,15 +102,14 @@ class CrawlerService
                 // When something went wrong - let's store it.
                 // I decided to go without Logging as I see no big profit of it during the test assignment
                 $this->errors[] = $e;
-
-                // Let's also say that we failed as far as no more tasks so it will be obvoious
-                if (empty($this->urlPool)) {
-                    $this->errors[] = new RuntimeException(
-                        'Empty tasks pool',
-                        Response::HTTP_INTERNAL_SERVER_ERROR
-                    );
-                }
             }
+        }
+
+        if (empty($this->urlPool) && $this->needsMoreResults() && !$this->isTooMuchErrors()) {
+            $this->errors[] = new RuntimeException(
+                'Empty tasks pool',
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
         }
 
         // Let's return results
@@ -154,6 +153,6 @@ class CrawlerService
 
     private function isTooMuchErrors(): bool
     {
-        return count($this->errors) < $this->config['max_errors'];
+        return count($this->errors) >= $this->config['max_errors'];
     }
 }
