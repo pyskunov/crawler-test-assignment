@@ -37,4 +37,5 @@ What we're looking for
 
 ## Bonus
 
-`php artisan crawler:parse {target}` do the same as we can do on the FE
+- `php artisan crawler:parse {target}` do the same as we can do on the FE
+- Unit Tests: `php artisan test`
