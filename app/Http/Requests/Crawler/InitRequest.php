@@ -16,8 +16,16 @@ class InitRequest extends FormRequest
         return [
             'target' => [
                 'required',
-                'url',
+//                'active_url',
+                'ip'
             ],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'target.active_url' => 'Most likely you are using non existing URL for this assignment',
         ];
     }
 }
