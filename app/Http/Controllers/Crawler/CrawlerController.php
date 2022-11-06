@@ -7,7 +7,6 @@ use App\Domains\Crawler\Transformers\CrawlerResultPresenter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Crawler\InitRequest;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Spatie\RouteAttributes\Attributes\Post;
 use Spatie\RouteAttributes\Attributes\Prefix;
 
@@ -34,7 +33,7 @@ class CrawlerController extends Controller
      * GOD BLESS SPATIE :)
      */
     #[Post(uri: 'crawler', name: 'crawler')]
-    public function crawler(InitRequest $request): View | RedirectResponse
+    public function crawler(InitRequest $request): View
     {
         // Let's expect view will be returned to display our results
         return view(
@@ -42,7 +41,7 @@ class CrawlerController extends Controller
             [
                 'data' => CrawlerResultPresenter::blade()->main(
                     $this->crawlerService->main(
-                        $request->validated('target')
+                        $request->input('target')
                     )
                 ),
             ]

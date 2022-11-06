@@ -16,8 +16,7 @@ class InitRequest extends FormRequest
         return [
             'target' => [
                 'required',
-//                'active_url',
-                'ip'
+                'active_url',
             ],
         ];
     }
