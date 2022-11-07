@@ -34,7 +34,7 @@ class HTMLParserPipelineTest extends TestCase
         );
 
         $this->assertSame(
-            3,
+            2,
             $task->getNumberOfInternalLinks()
         );
 
